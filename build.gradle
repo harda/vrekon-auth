@@ -12,7 +12,7 @@ apply plugin: 'maven'
 apply plugin: 'war'
 
 war {
-    archiveName 'vrekon.war'
+    archiveName 'auth.war'
 }
 
 repositories {
