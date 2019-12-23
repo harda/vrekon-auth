@@ -4,6 +4,7 @@ import com.mpc.vauth.config.JwtTokenUtil;
 import com.mpc.vauth.model.JwtRequest;
 import com.mpc.vauth.model.JwtResponse;
 import com.mpc.vauth.model.TransactionResponse;
+import com.mpc.vauth.repository.UsersRepository;
 import com.mpc.vauth.service.JwtUserDetailsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,6 +29,8 @@ public class JwtAuthenticationController {
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private JwtUserDetailsService userDetailsService;
+    @Autowired
+    private UsersRepository usersRepository;
 
     Logger log = LogManager.getLogger(getClass());
 
@@ -40,6 +43,7 @@ public class JwtAuthenticationController {
         JwtResponse jwtResponse = new JwtResponse();
         jwtResponse.setJwttoken(token);
         jwtResponse.setUsername(authenticationRequest.getUsername());
+        jwtResponse.setDetailUser(usersRepository.findByUsername(authenticationRequest.getUsername()));
 
         return ResponseEntity.ok(jwtResponse);
     }
