@@ -1,4 +1,4 @@
-FROM tomcat:8.0.51-jre8-alpine
+FROM tomcat : 8.5.30-jre8
 WORKDIR $CATALINA_HOME
 COPY /build/libs/auth.war /usr/local/tomcat/webapps/
 EXPOSE 8080
