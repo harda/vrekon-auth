@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build automation'
-                sh './gradlew bootWar --no-daemon'
+                sh './gradlew build --no-daemon'
                 archiveArtifacts artifacts: 'build/libs/auth.war'
             }
         }
