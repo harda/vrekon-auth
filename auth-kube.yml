@@ -32,20 +32,13 @@ spec:
         track: stable
     spec:
       containers:
-      - name: train-schedule
+      - name: visionauth
         image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
         volumeMounts:
         - name: config-data
           mountPath: /usr/local/tomcat/config-app
         ports:
         - containerPort: 8080
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8080
-          initialDelaySeconds: 15
-          timeoutSeconds: 1
-          periodSeconds: 10
         resources:
           requests:
             cpu: 200m
